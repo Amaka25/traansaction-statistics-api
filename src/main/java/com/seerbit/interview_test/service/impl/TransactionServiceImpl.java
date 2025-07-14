@@ -22,20 +22,31 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     public BigDecimal getAmountAsBigDecimal(String amount) {
-        if (amount != null) {
-            return new BigDecimal(amount);
-        }
-        else {
+        try {
+            if (amount != null) {
+                return new BigDecimal(amount);
+            }
+            else {
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("error, enter a valid amount");
             return null;
         }
 
     }
     public Instant getTimestampAsInstant(String timestamp) {
-        if (timestamp != null) {
-            return Instant.parse(timestamp);
+        try{
+            if (timestamp != null) {
+                return Instant.parse(timestamp);
+            }
+            else {
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("error, enter a valid timestamp");
+            throw new RuntimeException("error, enter a valid timestamp");
         }
-        else {
-            return null;
-        }
+
     }
 }
