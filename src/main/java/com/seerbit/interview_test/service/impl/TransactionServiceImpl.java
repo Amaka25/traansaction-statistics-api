@@ -133,15 +133,7 @@ public class TransactionServiceImpl implements TransactionService {
         if (duration.getSeconds() > 30) {
             throw new AppException("Timestamp is in the future", 422);
         }
-
-
     }
 
-    public void createStatistics(String timestamp) {
 
-
-//        while (duration.getSeconds() < 30) {
-//
-//        }
-    }
 }
