@@ -1,6 +1,7 @@
 package com.seerbit.interview_test.controller;
 
 import com.seerbit.interview_test.dto.ResponseDto;
+import com.seerbit.interview_test.dto.StatisticsDto;
 import com.seerbit.interview_test.dto.TransactionDto;
 import com.seerbit.interview_test.service.TransactionService;
 import jakarta.validation.Valid;
@@ -27,13 +28,15 @@ public class TransactionController {
     }
 
     @GetMapping
-    public String transaction2() {
-        return "success get";
+    public ResponseEntity<StatisticsDto> transaction2() {
+        StatisticsDto response = transactionService.createStatistics();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @DeleteMapping
-    public String transaction3() {
-        return "success delete";
+    public ResponseEntity<Void> transaction3() {
+        transactionService.deleteAllTransactions();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 }
